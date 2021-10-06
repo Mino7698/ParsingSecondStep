@@ -5,8 +5,6 @@ import java.util.Objects;
 
 @JsonAutoDetect
 public class JsonReadOperations {
-    //public String month;
-    // @JsonDeserialize(as = LinkedList.class)
     public List<Operations> operations;
 
     @Override
@@ -29,13 +27,6 @@ public class JsonReadOperations {
         return Objects.hash(operations);
     }
 
-    public List<Operations> getOperations() {
-        return operations;
-    }
-
-    public void setOperations(List<Operations> operations) {
-        this.operations = operations;
-    }
 }
 
 

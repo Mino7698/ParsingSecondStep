@@ -11,10 +11,5 @@ public class ProbaMappera {
         System.out.println(jsonRead);
 
 
-
-
-
-
-
     }
 }
