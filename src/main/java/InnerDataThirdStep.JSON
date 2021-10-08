@@ -1,0 +1,55 @@
+{
+  "months": [
+    {
+      "month": "January",
+      "operations": [
+        {
+          "value": 1000,
+          "currency": "USD"
+        },
+        {
+          "value": 3000,
+          "currency": "RUB"
+        },
+        {
+          "value": -2000,
+          "currency": "USD"
+        }
+      ]
+    },
+    {
+      "month": "February",
+      "operations": [
+        {
+          "value": 1000,
+          "currency": "USD"
+        },
+        {
+          "value": 3000,
+          "currency": "RUB"
+        },
+        {
+          "value": -2000,
+          "currency": "USD"
+        }
+      ]
+    },
+    {
+      "month": "March",
+      "operations": [
+        {
+          "value": 1000,
+          "currency": "USD"
+        },
+        {
+          "value": 3000,
+          "currency": "RUB"
+        },
+        {
+          "value": -2000,
+          "currency": "USD"
+        }
+      ]
+    }
+  ]
+}

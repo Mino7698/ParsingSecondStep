@@ -7,6 +7,7 @@ import java.util.Objects;
 public class JsonReadOperations {
     public List<Operations> operations;
 
+
     @Override
     public String toString() {
         return "JsonRead{" +

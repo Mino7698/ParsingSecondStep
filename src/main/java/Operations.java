@@ -4,12 +4,17 @@ import java.util.Objects;
 
 @JsonAutoDetect
 public class Operations {
-    int value;
-    String currency;
+    private int value;
+    private String currency;
+
+    public Operations(int value, String currency) {
+        this.value = value;
+        this.currency = currency;
+    }
 
     @Override
     public String toString() {
-        return "Operations{" +
+        return "Operations={" +
                 "value=" + value +
                 ", currency='" + currency + '\'' +
                 '}';
