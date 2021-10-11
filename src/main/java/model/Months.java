@@ -27,14 +27,14 @@ public class Months {
 
     public Months(List<Operations> operations, String monthName){
         this.operations = operations;
-        NamesOfMonths N = NamesOfMonths.INCORRECT;
-        for (NamesOfMonths iN : NamesOfMonths.values()){
-            if (iN.getName() == monthName) {
-                N = iN;
+        NamesOfMonths FlagOfMonthName = NamesOfMonths.INCORRECT;
+        for (NamesOfMonths CounterOfMonthName : NamesOfMonths.values()){
+            if (CounterOfMonthName.getName() == monthName) {
+                FlagOfMonthName = CounterOfMonthName;
                 break;
             }
         }
-        this.monthName = N;
+        this.monthName = FlagOfMonthName;
     }
 
     public Months(ReadTheMonths monthName){
