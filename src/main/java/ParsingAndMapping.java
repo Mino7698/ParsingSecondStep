@@ -4,15 +4,15 @@ import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.*;
 
-public class ProbaMapperaWithHandsThirdVersion {
+public class ParsingAndMapping {
     public static void main(String[] args) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         Map<String,Map<String, List<Map<String, Object>>>> jsonRead = mapper.readValue(Paths.get("src/main/java/InnerData4Step.JSON").toFile(), Map.class);
-        List<OneMonth> ListOfMonth = new ArrayList<>();
+        List<Months> ListOfMonth = new ArrayList<>();
 
         Set<String> setOfMonths = jsonRead.keySet();
         for (String k : setOfMonths) {
-            ListOfMonth.add(new OneMonth(parseOperations(jsonRead,k)));
+            ListOfMonth.add(new Months(parseOperations(jsonRead,k)));
         }
 
         System.out.println(ListOfMonth);

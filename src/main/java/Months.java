@@ -1,49 +1,52 @@
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 
 public class Months {
-    String month;
     List<Operations> operations;
+    NamesOfMonths monthName;
 
-    public Months(String month, List<Map<String, Object>> operations){
-        this.month = month;
-        this.operations = parseOperations(operations);
+
+    public Months(List<Operations> operations, String monthName){
+        this.operations = operations;
+        NamesOfMonths N = NamesOfMonths.INCORRECT;
+        for (NamesOfMonths iN : NamesOfMonths.values()){
+            if (iN.getName() == monthName) {
+                N = iN;
+                break;
+            }
+        }
+        this.monthName = N;
     }
 
-    private static List<Operations> parseOperations(List<Map<String, Object>> notParsedOperations) {
-
-        List<Operations> operations = new ArrayList<>();
-
-        for (int i = 0; i < notParsedOperations.size(); i++) {
-            Map<String, Object> notParsedOperation = (Map<String, Object>) notParsedOperations.get(i);
-            String currency = (String) notParsedOperation.get("currency");
-            int value = (int) notParsedOperation.get("value");
-            operations.add(new Operations(value, currency));
+    public Months(ReadTheMonths monthName){
+        this.operations = monthName.operations;
+        NamesOfMonths N = NamesOfMonths.INCORRECT;
+        for (NamesOfMonths iN : NamesOfMonths.values()){
+            if (iN.getName() == monthName.monthName) {
+                N = iN;
+                break;
+            }
         }
+        this.monthName = N;
+    }
 
-        return operations;
+    @Override
+    public String toString() {
+        return monthName.getName() + "={" +
+                operations +
+                '}';
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Months months = (Months) o;
-        return Objects.equals(month, months.month) && Objects.equals(operations, months.operations);
+        Months oneMonth = (Months) o;
+        return Objects.equals(operations, oneMonth.operations) && monthName == oneMonth.monthName;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(month, operations);
-    }
-
-    @Override
-    public String toString() {
-        return "Months={" +
-                "month='" + month + '\'' +
-                ", operations=" + operations +
-                '}';
+        return Objects.hash(operations, monthName);
     }
 }
