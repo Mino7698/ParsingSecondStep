@@ -8,21 +8,22 @@ public class ProbaMapperaWithHandsThirdVersion {
     public static void main(String[] args) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         Map<String,Map<String, List<Map<String, Object>>>> jsonRead = mapper.readValue(Paths.get("src/main/java/InnerData4Step.JSON").toFile(), Map.class);
-//вот результат мапы
+        List<OneMonth> ListOfMonth = new ArrayList<>();
 
-        var setOfMonths = jsonRead.keySet();
-        for (var k : setOfMonths) {
-            System.out.println(parseOperations(jsonRead,k));
+        Set<String> setOfMonths = jsonRead.keySet();
+        for (String k : setOfMonths) {
+            ListOfMonth.add(new OneMonth(parseOperations(jsonRead,k)));
         }
 
+        System.out.println(ListOfMonth);
 
     }
 
-    private static SecondMonths parseOperations(Map<String,Map<String, List<Map<String, Object>>>> jsonRead, String monthName) {
+    private static ReadTheMonths parseOperations(Map<String,Map<String, List<Map<String, Object>>>> jsonRead, String monthName) {
 
         Map<String, List<Map<String, Object>>> notParsedOperations2 = jsonRead.get(monthName);
         List<Map<String, Object>> notParsedOperations = notParsedOperations2.get("operations");
-        SecondMonths months = new SecondMonths(notParsedOperations,monthName);
+        ReadTheMonths months = new ReadTheMonths(notParsedOperations,monthName);
 
         return months;
     }

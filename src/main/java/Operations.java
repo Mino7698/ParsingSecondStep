@@ -14,7 +14,7 @@ public class Operations {
 
     @Override
     public String toString() {
-        return "Operations={" +
+        return "{" +
                 "value=" + value +
                 ", currency='" + currency + '\'' +
                 '}';

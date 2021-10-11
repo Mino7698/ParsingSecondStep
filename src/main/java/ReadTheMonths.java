@@ -3,12 +3,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-public class SecondMonths {
+public class ReadTheMonths {
     List<Operations> operations;
     String monthName;
 
 
-    public SecondMonths(List<Map<String, Object>> operations, String monthName){
+    public ReadTheMonths(List<Map<String, Object>> operations, String monthName){
         this.operations = parseOperations(operations);
         this.monthName = monthName;
     }
@@ -32,7 +32,7 @@ public class SecondMonths {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        SecondMonths that = (SecondMonths) o;
+        ReadTheMonths that = (ReadTheMonths) o;
         return Objects.equals(operations, that.operations);
     }
 
