@@ -2,17 +2,19 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ProbaMapperaWithHandsThirdVersion {
     public static void main(String[] args) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         Map<String,Map<String, List<Map<String, Object>>>> jsonRead = mapper.readValue(Paths.get("src/main/java/InnerData4Step.JSON").toFile(), Map.class);
 //вот результат мапы
-        System.out.println(parseOperations(jsonRead,"Январь"));
-        System.out.println(parseOperations(jsonRead,"Февраль"));
+
+        var setOfMonths = jsonRead.keySet();
+        for (var k : setOfMonths) {
+            System.out.println(parseOperations(jsonRead,k));
+        }
+
 
     }
 
