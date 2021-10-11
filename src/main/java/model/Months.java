@@ -39,14 +39,14 @@ public class Months {
 
     public Months(ReadTheMonths monthName){
         this.operations = monthName.getOperations();
-        NamesOfMonths N = NamesOfMonths.INCORRECT;
-        for (NamesOfMonths iN : NamesOfMonths.values()){
-            if (iN.getName() == monthName.getMonthName()) {
-                N = iN;
+        NamesOfMonths FlagOfMonthName = NamesOfMonths.INCORRECT;
+        for (NamesOfMonths CounterOfMonthName : NamesOfMonths.values()){
+            if (CounterOfMonthName.getName() == monthName.getMonthName()) {
+                FlagOfMonthName = CounterOfMonthName;
                 break;
             }
         }
-        this.monthName = N;
+        this.monthName = FlagOfMonthName;
     }
 
     @Override
