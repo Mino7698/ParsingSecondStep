@@ -1,10 +1,29 @@
+package model;
+
+import util.ReadTheMonths;
+
 import java.util.List;
 import java.util.Objects;
 
 public class Months {
-    List<Operations> operations;
-    NamesOfMonths monthName;
+    private List<Operations> operations;
+    private NamesOfMonths monthName;
 
+    public List<Operations> getOperations() {
+        return operations;
+    }
+
+    public void setOperations(List<Operations> operations) {
+        this.operations = operations;
+    }
+
+    public NamesOfMonths getMonthName() {
+        return monthName;
+    }
+
+    public void setMonthName(NamesOfMonths monthName) {
+        this.monthName = monthName;
+    }
 
     public Months(List<Operations> operations, String monthName){
         this.operations = operations;
@@ -19,10 +38,10 @@ public class Months {
     }
 
     public Months(ReadTheMonths monthName){
-        this.operations = monthName.operations;
+        this.operations = monthName.getOperations();
         NamesOfMonths N = NamesOfMonths.INCORRECT;
         for (NamesOfMonths iN : NamesOfMonths.values()){
-            if (iN.getName() == monthName.monthName) {
+            if (iN.getName() == monthName.getMonthName()) {
                 N = iN;
                 break;
             }

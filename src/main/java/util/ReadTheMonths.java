@@ -1,11 +1,15 @@
+package util;
+
+import model.Operations;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
 public class ReadTheMonths {
-    List<Operations> operations;
-    String monthName;
+    private List<Operations> operations;
+    private String monthName;
 
 
     public ReadTheMonths(List<Map<String, Object>> operations, String monthName){
@@ -26,6 +30,31 @@ public class ReadTheMonths {
         }
 
         return operations;
+    }
+
+    public static ReadTheMonths parseOperations(Map<String, Map<String, List<Map<String, Object>>>> jsonRead, String monthName) {
+
+        Map<String, List<Map<String, Object>>> notParsedOperations2 = jsonRead.get(monthName);
+        List<Map<String, Object>> notParsedOperations = notParsedOperations2.get("operations");
+        ReadTheMonths months = new ReadTheMonths(notParsedOperations,monthName);
+
+        return months;
+    }
+
+    public List<Operations> getOperations() {
+        return operations;
+    }
+
+    public void setOperations(List<Operations> operations) {
+        this.operations = operations;
+    }
+
+    public String getMonthName() {
+        return monthName;
+    }
+
+    public void setMonthName(String monthName) {
+        this.monthName = monthName;
     }
 
     @Override
