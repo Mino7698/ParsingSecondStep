@@ -15,13 +15,13 @@ public enum NamesOfMonths {
     ДЕКАБРЬ("Декабрь"),
     INCORRECT("IncorrectName");
 
-    private final String MnthName;
+    private final String mnthName;
 
-    NamesOfMonths (String NameMnth) {
-        this.MnthName = NameMnth;
+    NamesOfMonths (String nameMnth) {
+        this.mnthName = nameMnth;
     }
 
     public String getName() {
-        return MnthName;
+        return mnthName;
     }
 }

@@ -1,6 +1,6 @@
 package util;
 
-import model.Operations;
+import model.Operation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,8 +8,8 @@ import java.util.Map;
 import java.util.Objects;
 
 public class ReadTheMonths {
-    private List<Operations> operations;
-    private String monthName;
+    private final List<Operation> operations;
+    private final String monthName;
 
 
     public ReadTheMonths(List<Map<String, Object>> operations, String monthName){
@@ -18,15 +18,15 @@ public class ReadTheMonths {
     }
 
 
-    private static List<Operations> parseOperations(List<Map<String, Object>> notParsedOperations) {
+    private static List<Operation> parseOperations(List<Map<String, Object>> notParsedOperations) {
 
-        List<Operations> operations = new ArrayList<>();
+        List<Operation> operations = new ArrayList<>();
 
         for (int i = 0; i < notParsedOperations.size(); i++) {
-            Map<String, Object> notParsedOperation = (Map<String, Object>) notParsedOperations.get(i);
+            Map<String, Object> notParsedOperation = notParsedOperations.get(i);
             String currency = (String) notParsedOperation.get("currency");
             int value = (int) notParsedOperation.get("value");
-            operations.add(new Operations(value, currency));
+            operations.add(new Operation(value, currency));
         }
 
         return operations;
@@ -36,25 +36,16 @@ public class ReadTheMonths {
 
         Map<String, List<Map<String, Object>>> notParsedOperations2 = jsonRead.get(monthName);
         List<Map<String, Object>> notParsedOperations = notParsedOperations2.get("operations");
-        ReadTheMonths months = new ReadTheMonths(notParsedOperations,monthName);
 
-        return months;
+        return new ReadTheMonths(notParsedOperations,monthName);
     }
 
-    public List<Operations> getOperations() {
+    public List<Operation> getOperations() {
         return operations;
-    }
-
-    public void setOperations(List<Operations> operations) {
-        this.operations = operations;
     }
 
     public String getMonthName() {
         return monthName;
-    }
-
-    public void setMonthName(String monthName) {
-        this.monthName = monthName;
     }
 
     @Override

@@ -1,0 +1,34 @@
+{
+  "Январь": {
+    "operations": [
+      {
+        "value": 1000,
+        "currency": "USD"
+      },
+      {
+        "value": 3000,
+        "currency": "RUB"
+      },
+      {
+        "value": -2000,
+        "currency": "USD"
+      }
+    ]
+  },
+  "Февраль": {
+  "operations": [
+    {
+      "value": 10001,
+      "currency": "USD"
+    },
+    {
+      "value": 30001,
+      "currency": "RUB"
+    },
+    {
+      "value": -20001,
+      "currency": "USD"
+    }
+  ]
+}
+}

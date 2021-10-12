@@ -6,14 +6,14 @@ import java.util.List;
 import java.util.Objects;
 
 public class Months {
-    private List<Operations> operations;
+    private List<Operation> operations;
     private NamesOfMonths monthName;
 
-    public List<Operations> getOperations() {
+    public List<Operation> getOperations() {
         return operations;
     }
 
-    public void setOperations(List<Operations> operations) {
+    public void setOperations(List<Operation> operations) {
         this.operations = operations;
     }
 
@@ -25,7 +25,7 @@ public class Months {
         this.monthName = monthName;
     }
 
-    public Months(List<Operations> operations, String monthName){
+    public Months(List<Operation> operations, String monthName){
         this.operations = operations;
         NamesOfMonths FlagOfMonthName = NamesOfMonths.INCORRECT;
         for (NamesOfMonths CounterOfMonthName : NamesOfMonths.values()){
@@ -51,9 +51,9 @@ public class Months {
 
     @Override
     public String toString() {
-        return monthName.getName() + "={" +
+        return monthName.getName() + ": { operations: " +
                 operations +
-                '}';
+                "}";
     }
 
     @Override

@@ -5,11 +5,11 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import java.util.Objects;
 
 @JsonAutoDetect
-public class Operations {
-    private int value;
-    private String currency;
+public class Operation {
+    private final int value;
+    private final String currency;
 
-    public Operations(int value, String currency) {
+    public Operation(int value, String currency) {
         this.value = value;
         this.currency = currency;
     }
@@ -26,7 +26,7 @@ public class Operations {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Operations that = (Operations) o;
+        Operation that = (Operation) o;
         return value == that.value && Objects.equals(currency, that.currency);
     }
 
