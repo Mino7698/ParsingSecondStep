@@ -1,6 +1,6 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
-import model.Months;
-import util.ReadTheMonths;
+import model.Customer;
+import util.ReadTheCustomer;
 
 import java.io.IOException;
 import java.nio.file.Paths;
@@ -9,16 +9,18 @@ import java.util.*;
 public class ParsingAndMapping {
     public static void main(String[] args) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
-       // Map<String,Map<String, List<Map<String, Object>>>> jsonRead = mapper.readValue(Paths.get("src/main/java/data_json/InnerData4Step.JSON").toFile(), Map.class);
-        Map jsonRead = mapper.readValue(Paths.get("src/main/java/data_json/InnerData4Step.JSON").toFile(), Map.class);
-        List<Months> listOfMonth = new ArrayList<>();
+        Map<String,Map<String, Map<String, List<Map<String, Object>>>>> jsonRead = mapper.readValue(Paths.get("src/main/java/data_json/InnerData5Step.JSON").toFile(), Map.class);
 
-        Set<String> setOfMonths = jsonRead.keySet();
-        for (String k : setOfMonths) {
-            listOfMonth.add(new Months(ReadTheMonths.parseOperations(jsonRead,k)));
+
+
+        List<Customer> listOfCustomers = new ArrayList<>();
+
+        Set<String> setOfCustomers = jsonRead.keySet();
+       for (String customerName : setOfCustomers) {
+            listOfCustomers.add(new Customer(ReadTheCustomer.parseOperations(jsonRead, customerName)));
         }
 
-        System.out.println(listOfMonth);
+        System.out.println(listOfCustomers);
 
     }
 

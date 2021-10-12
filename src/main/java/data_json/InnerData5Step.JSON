@@ -1,34 +1,70 @@
 {
-  "Январь": {
-    "operations": [
-      {
-        "value": 1000,
-        "currency": "USD"
-      },
-      {
-        "value": 3000,
-        "currency": "RUB"
-      },
-      {
-        "value": -2000,
-        "currency": "USD"
-      }
-    ]
-  },
-  "Февраль": {
-  "operations": [
-    {
-      "value": 10001,
-      "currency": "USD"
+  "Илья": {
+    "Январь": {
+      "operations": [
+        {
+          "value": 11000,
+          "currency": "USD"
+        },
+        {
+          "value": 33000,
+          "currency": "RUB"
+        },
+        {
+          "value": -22000,
+          "currency": "USD"
+        }
+      ]
     },
-    {
-      "value": 30001,
-      "currency": "RUB"
-    },
-    {
-      "value": -20001,
-      "currency": "USD"
+    "Февраль": {
+      "operations": [
+        {
+          "value": 10001,
+          "currency": "USD"
+        },
+        {
+          "value": 30001,
+          "currency": "RUB"
+        },
+        {
+          "value": -20001,
+          "currency": "USD"
+        }
+      ]
     }
-  ]
-}
+  },
+  "Семен": {
+    "Январь": {
+      "operations": [
+        {
+          "value": 100,
+          "currency": "USD"
+        },
+        {
+          "value": 300,
+          "currency": "RUB"
+        },
+        {
+          "value": -200,
+          "currency": "USD"
+        }
+      ]
+    },
+    "Февраль": {
+      "operations": [
+        {
+          "value": 101,
+          "currency": "USD"
+        },
+        {
+          "value": 303,
+          "currency": "RUB"
+        },
+        {
+          "value": -202,
+          "currency": "USD"
+        }
+      ]
+    }
+  }
 }

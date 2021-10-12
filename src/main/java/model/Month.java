@@ -5,7 +5,7 @@ import util.ReadTheMonths;
 import java.util.List;
 import java.util.Objects;
 
-public class Months {
+public class Month {
     private List<Operation> operations;
     private NamesOfMonths monthName;
 
@@ -25,7 +25,7 @@ public class Months {
         this.monthName = monthName;
     }
 
-    public Months(List<Operation> operations, String monthName){
+    public Month(List<Operation> operations, String monthName){
         this.operations = operations;
         NamesOfMonths FlagOfMonthName = NamesOfMonths.INCORRECT;
         for (NamesOfMonths CounterOfMonthName : NamesOfMonths.values()){
@@ -37,7 +37,7 @@ public class Months {
         this.monthName = FlagOfMonthName;
     }
 
-    public Months(ReadTheMonths monthName){
+    public Month(ReadTheMonths monthName){
         this.operations = monthName.getOperations();
         NamesOfMonths FlagOfMonthName = NamesOfMonths.INCORRECT;
         for (NamesOfMonths CounterOfMonthName : NamesOfMonths.values()){
@@ -60,7 +60,7 @@ public class Months {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Months oneMonth = (Months) o;
+        Month oneMonth = (Month) o;
         return Objects.equals(operations, oneMonth.operations) && monthName == oneMonth.monthName;
     }
 
