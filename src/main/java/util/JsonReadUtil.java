@@ -1,24 +1,23 @@
 package util;
 
+import model.Customer;
+import model.Month;
 import model.Operation;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
-public class ReadTheMonths {
+public class JsonReadUtil {
     private final List<Operation> operations;
     private final String monthName;
 
 
-    public ReadTheMonths(List<Map<String, Object>> operations, String monthName){
-        this.operations = parseOperations(operations);
+    public JsonReadUtil(List<Map<String, Object>> operations, String monthName){
+        this.operations = parseOfOperation(operations);
         this.monthName = monthName;
     }
 
 
-    private static List<Operation> parseOperations(List<Map<String, Object>> notParsedOperations) {
+    private static List<Operation> parseOfOperation(List<Map<String, Object>> notParsedOperations) {
 
         List<Operation> operations = new ArrayList<>();
 
@@ -32,12 +31,26 @@ public class ReadTheMonths {
         return operations;
     }
 
-    public static ReadTheMonths parseOperations(Map<String, Map<String, List<Map<String, Object>>>> jsonRead, String monthName) {
+    public static JsonReadUtil parseOfOperationList(Map<String, Map<String, List<Map<String, Object>>>> jsonRead, String monthName) {
 
         Map<String, List<Map<String, Object>>> notParsedOperations2 = jsonRead.get(monthName);
         List<Map<String, Object>> notParsedOperations = notParsedOperations2.get("operations");
 
-        return new ReadTheMonths(notParsedOperations,monthName);
+        return new JsonReadUtil(notParsedOperations,monthName);
+    }
+
+    public static Customer parseOfMonthList(Map<String,Map<String, Map<String, List<Map<String, Object>>>>> jsonRead, String customerName) {
+
+        Map<String, Map<String, List<Map<String, Object>>>> notParsedOperations = jsonRead.get(customerName);
+
+        List<Month> listOfMonth = new ArrayList<>();
+        Set<String> setOfMonths = notParsedOperations.keySet();
+        for (String monthName : setOfMonths) {
+            listOfMonth.add(new Month(JsonReadUtil.parseOfOperationList(notParsedOperations,monthName)));
+        }
+
+
+        return new Customer(listOfMonth, customerName);
     }
 
     public List<Operation> getOperations() {
@@ -52,7 +65,7 @@ public class ReadTheMonths {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ReadTheMonths that = (ReadTheMonths) o;
+        JsonReadUtil that = (JsonReadUtil) o;
         return Objects.equals(operations, that.operations);
     }
 

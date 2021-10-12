@@ -1,52 +1,44 @@
 package model;
 
-import util.ReadTheMonths;
+import util.JsonReadUtil;
 
 import java.util.List;
 import java.util.Objects;
 
 public class Month {
-    private List<Operation> operations;
-    private NamesOfMonths monthName;
+    private final List<Operation> operations;
+    private final NameOfMonths monthName;
 
     public List<Operation> getOperations() {
         return operations;
     }
 
-    public void setOperations(List<Operation> operations) {
-        this.operations = operations;
-    }
-
-    public NamesOfMonths getMonthName() {
+    public NameOfMonths getMonthName() {
         return monthName;
-    }
-
-    public void setMonthName(NamesOfMonths monthName) {
-        this.monthName = monthName;
     }
 
     public Month(List<Operation> operations, String monthName){
         this.operations = operations;
-        NamesOfMonths FlagOfMonthName = NamesOfMonths.INCORRECT;
-        for (NamesOfMonths CounterOfMonthName : NamesOfMonths.values()){
-            if (CounterOfMonthName.getName() == monthName) {
-                FlagOfMonthName = CounterOfMonthName;
+        NameOfMonths flagOfMonthName = NameOfMonths.INCORRECT;
+        for (NameOfMonths CounterOfMonthName : NameOfMonths.values()){
+            if (CounterOfMonthName.getName().equals(monthName)) {
+                flagOfMonthName = CounterOfMonthName;
                 break;
             }
         }
-        this.monthName = FlagOfMonthName;
+        this.monthName = flagOfMonthName;
     }
 
-    public Month(ReadTheMonths monthName){
+    public Month(JsonReadUtil monthName){
         this.operations = monthName.getOperations();
-        NamesOfMonths FlagOfMonthName = NamesOfMonths.INCORRECT;
-        for (NamesOfMonths CounterOfMonthName : NamesOfMonths.values()){
-            if (CounterOfMonthName.getName() == monthName.getMonthName()) {
-                FlagOfMonthName = CounterOfMonthName;
+        NameOfMonths flagOfMonthName = NameOfMonths.INCORRECT;
+        for (NameOfMonths CounterOfMonthName : NameOfMonths.values()){
+            if (CounterOfMonthName.getName().equals(monthName.getMonthName())) {
+                flagOfMonthName = CounterOfMonthName;
                 break;
             }
         }
-        this.monthName = FlagOfMonthName;
+        this.monthName = flagOfMonthName;
     }
 
     @Override

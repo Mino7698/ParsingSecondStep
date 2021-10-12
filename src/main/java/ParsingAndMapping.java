@@ -1,6 +1,6 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
 import model.Customer;
-import util.ReadTheCustomer;
+import util.JsonReadUtil;
 
 import java.io.IOException;
 import java.nio.file.Paths;
@@ -17,7 +17,7 @@ public class ParsingAndMapping {
 
         Set<String> setOfCustomers = jsonRead.keySet();
        for (String customerName : setOfCustomers) {
-            listOfCustomers.add(new Customer(ReadTheCustomer.parseOperations(jsonRead, customerName)));
+            listOfCustomers.add(new Customer(JsonReadUtil.parseOfMonthList(jsonRead, customerName)));
         }
 
         System.out.println(listOfCustomers);

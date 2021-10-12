@@ -1,6 +1,6 @@
 package model;
 
-public enum NamesOfMonths {
+public enum NameOfMonths {
     ЯНВАРЬ("Январь"),
     ФЕВРАЛЬ("Февраль"),
     МАРТ("Март"),
@@ -17,7 +17,7 @@ public enum NamesOfMonths {
 
     private final String mnthName;
 
-    NamesOfMonths (String nameMnth) {
+    NameOfMonths(String nameMnth) {
         this.mnthName = nameMnth;
     }
 
