@@ -4,14 +4,18 @@ import model.Customer;
 import model.Month;
 import model.Operation;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class JsonReadUtil {
     private final List<Operation> operations;
     private final String monthName;
 
 
-    public JsonReadUtil(List<Map<String, Object>> operations, String monthName){
+    public JsonReadUtil(List<Map<String, Object>> operations, String monthName) {
         this.operations = parseOfOperation(operations);
         this.monthName = monthName;
     }
@@ -36,21 +40,18 @@ public class JsonReadUtil {
         Map<String, List<Map<String, Object>>> notParsedOperations2 = jsonRead.get(monthName);
         List<Map<String, Object>> notParsedOperations = notParsedOperations2.get("operations");
 
-        return new JsonReadUtil(notParsedOperations,monthName);
+        return new JsonReadUtil(notParsedOperations, monthName);
     }
 
-    public static Customer parseOfMonthList(Map<String,Map<String, Map<String, List<Map<String, Object>>>>> jsonRead, String customerName) {
+    public static Customer parseOfMonthList(Map<String, Map<String, Map<String, List<Map<String, Object>>>>> jsonRead, String customerName) {
 
-        Map<String, Map<String, List<Map<String, Object>>>> notParsedOperations = jsonRead.get(customerName);
+        Map<String, Map<String, List<Map<String, Object>>>> notParsedMonths = jsonRead.get(customerName);
 
-        List<Month> listOfMonth = new ArrayList<>();
-        Set<String> setOfMonths = notParsedOperations.keySet();
-        for (String monthName : setOfMonths) {
-            listOfMonth.add(new Month(JsonReadUtil.parseOfOperationList(notParsedOperations,monthName)));
-        }
+        List<Month> listOfMonth2 = notParsedMonths.keySet().stream()
+                .map(monthName -> new Month(JsonReadUtil.parseOfOperationList(notParsedMonths, monthName)))
+                .collect(Collectors.toList());
 
-
-        return new Customer(listOfMonth, customerName);
+        return new Customer(listOfMonth2, customerName);
     }
 
     public List<Operation> getOperations() {
@@ -76,7 +77,7 @@ public class JsonReadUtil {
 
     @Override
     public String toString() {
-        return  monthName + "={" +
+        return monthName + "={" +
                 "operations=" + operations +
                 '}';
     }

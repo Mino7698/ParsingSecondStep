@@ -1,29 +1,20 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
-import model.Customer;
-import util.JsonReadUtil;
+import service.CustomerService;
 
 import java.io.IOException;
 import java.nio.file.Paths;
-import java.util.*;
+import java.util.Map;
 
 public class ParsingAndMapping {
     public static void main(String[] args) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
-        Map<String,Map<String, Map<String, List<Map<String, Object>>>>> jsonRead = mapper.readValue(Paths.get("src/main/java/data_json/InnerData5Step.JSON").toFile(), Map.class);
+        Map/*<String, Map<String, Map<String, List<Map<String, Object>>>>>*/ jsonRead = mapper.readValue(Paths.get("src/main/java/data_json/InnerData5Step.JSON").toFile(), Map.class);
+
+        System.out.println(CustomerService.getCustomersWithPositiveBalance());
 
 
-
-        List<Customer> listOfCustomers = new ArrayList<>();
-
-        Set<String> setOfCustomers = jsonRead.keySet();
-       for (String customerName : setOfCustomers) {
-            listOfCustomers.add(new Customer(JsonReadUtil.parseOfMonthList(jsonRead, customerName)));
-        }
-
-        System.out.println(listOfCustomers);
 
     }
-
 
 
 }

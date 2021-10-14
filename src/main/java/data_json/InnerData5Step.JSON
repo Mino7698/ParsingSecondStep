@@ -34,7 +34,7 @@
     }
   },
   "Семен": {
-    "Январь": {
+    "Август": {
       "operations": [
         {
           "value": 100,
@@ -50,7 +50,23 @@
         }
       ]
     },
-    "Февраль": {
+    "Сентябрь": {
+      "operations": [
+        {
+          "value": 101,
+          "currency": "USD"
+        },
+        {
+          "value": 30003,
+          "currency": "RUB"
+        },
+        {
+          "value": -2002,
+          "currency": "USD"
+        }
+      ]
+    },
+    "Март": {
       "operations": [
         {
           "value": 101,
@@ -59,6 +75,96 @@
         {
           "value": 303,
           "currency": "RUB"
+        },
+        {
+          "value": -2002,
+          "currency": "USD"
+        }
+      ]
+    }
+  },
+  "Пётр": {
+    "Январь": {
+      "operations": [
+        {
+          "value": 100,
+          "currency": "USD"
+        },
+        {
+          "value": 30000,
+          "currency": "RUB"
+        },
+        {
+          "value": -2000000,
+          "currency": "USD"
+        }
+      ]
+    },
+    "Март": {
+      "operations": [
+        {
+          "value": 101,
+          "currency": "USD"
+        },
+        {
+          "value": 303,
+          "currency": "RUB"
+        },
+        {
+          "value": -202,
+          "currency": "USD"
+        }
+      ]
+    },
+    "Июнь": {
+      "operations": [
+        {
+          "value": 101,
+          "currency": "USD"
+        },
+        {
+          "value": 303,
+          "currency": "RUB"
+        },
+        {
+          "value": -202,
+          "currency": "USD"
+        }
+      ]
+    }
+  },
+  "Павел": {
+    "Январь": {
+      "operations": [
+        {
+          "value": -202,
+          "currency": "USD"
+        }
+      ]
+    },
+    "Февраль": {
+      "operations": [
+      ]
+    },
+    "Март": {
+      "operations": [
+      ]
+    }
+  },
+  "Саня": {
+    "Январь": {
+      "operations": [
+      ]
+    },
+    "Февраль": {
+      "operations": [
+      ]
+    },
+    "Март": {
+      "operations": [
+        {
+          "value": 203,
+          "currency": "USD"
         },
         {
           "value": -202,
