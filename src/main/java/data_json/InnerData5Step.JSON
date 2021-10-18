@@ -102,19 +102,7 @@
     },
     "Март": {
       "operations": [
-        {
-          "value": 101,
-          "currency": "USD"
-        },
-        {
-          "value": 303,
-          "currency": "RUB"
-        },
-        {
-          "value": -202,
-          "currency": "USD"
-        }
-      ]
+        ]
     },
     "Июнь": {
       "operations": [
@@ -170,6 +158,20 @@
           "value": -202,
           "currency": "USD"
         }
+      ]
+    }
+  },
+  "Люся": {
+    "Ноябрь": {
+      "operations": [
+      ]
+    },
+    "Февраль": {
+      "operations": [
+      ]
+    },
+    "Март": {
+      "operations": [
       ]
     }
   }

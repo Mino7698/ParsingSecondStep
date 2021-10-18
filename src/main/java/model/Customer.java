@@ -6,15 +6,30 @@ import java.util.Objects;
 public class Customer {
     private final List<Month> months;
     private final String customerName;
+    private final int saldoOfCustomer;
+    private final int numberOfCustomerOperations;
+
 
     public Customer (List<Month> months, String customer){
         this.months = months;
         this.customerName = customer;
+        this.saldoOfCustomer = months.stream()
+                .map(value -> value.getSaldoOfMonth())
+                .reduce(0, Integer::sum);
+        this.numberOfCustomerOperations=months.stream()
+                .map(value -> value.getNumberOfMonthOperations())
+                .reduce(0, Integer::sum);
     }
 
     public Customer (Customer customer){
         this.months = customer.months;
         this.customerName = customer.customerName;
+        this.saldoOfCustomer = months.stream()
+                .map(value -> value.getSaldoOfMonth())
+                .reduce(0, Integer::sum);
+        this.numberOfCustomerOperations=months.stream()
+                .map(value -> value.getNumberOfMonthOperations())
+                .reduce(0, Integer::sum);
     }
 
     public List<Month> getMonths() {
@@ -23,6 +38,14 @@ public class Customer {
 
     public String getCustomerName() {
         return customerName;
+    }
+
+    public int getSaldoOfCustomer() {
+        return saldoOfCustomer;
+    }
+
+    public int getNumberOfCustomerOperations() {
+        return numberOfCustomerOperations;
     }
 
     @Override

@@ -22,17 +22,9 @@ public class JsonReadUtil {
 
 
     private static List<Operation> parseOfOperation(List<Map<String, Object>> notParsedOperations) {
-
-        List<Operation> operations = new ArrayList<>();
-
-        for (int i = 0; i < notParsedOperations.size(); i++) {
-            Map<String, Object> notParsedOperation = notParsedOperations.get(i);
-            String currency = (String) notParsedOperation.get("currency");
-            int value = (int) notParsedOperation.get("value");
-            operations.add(new Operation(value, currency));
-        }
-
-        return operations;
+        return notParsedOperations.stream()
+                .map(x -> new Operation((int)x.get("value"),(String) x.get("currency")))
+                .collect(Collectors.toList());
     }
 
     public static JsonReadUtil parseOfOperationList(Map<String, Map<String, List<Map<String, Object>>>> jsonRead, String monthName) {
@@ -47,11 +39,11 @@ public class JsonReadUtil {
 
         Map<String, Map<String, List<Map<String, Object>>>> notParsedMonths = jsonRead.get(customerName);
 
-        List<Month> listOfMonth2 = notParsedMonths.keySet().stream()
+        List<Month> listOfMonth = notParsedMonths.keySet().stream()
                 .map(monthName -> new Month(JsonReadUtil.parseOfOperationList(notParsedMonths, monthName)))
                 .collect(Collectors.toList());
 
-        return new Customer(listOfMonth2, customerName);
+        return new Customer(listOfMonth, customerName);
     }
 
     public List<Operation> getOperations() {
