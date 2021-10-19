@@ -10,7 +10,6 @@ import util.JsonReadUtil;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -19,12 +18,9 @@ public class CustomerService {
 
     //возвращает всех пользователей
     public static List<Customer> getAllCustomers() throws IOException {
-
         ObjectMapper mapper = new ObjectMapper();
         Map<String, Map<String, Map<String, List<Map<String, Object>>>>> jsonRead = mapper
-                .readValue(Paths.get("src/main/java/data_json/InnerData5Step.JSON")
-                        .toFile(), Map.class);
-
+                .readValue(Paths.get("src/main/java/data_json/InnerData5Step.JSON").toFile(), Map.class);
         return jsonRead.keySet().stream()
                 .map(customerName -> new Customer(JsonReadUtil.parseOfMonthList(jsonRead, customerName)))
                 .collect(Collectors.toList());
@@ -39,7 +35,7 @@ public class CustomerService {
                 result.add(new MonthForTop(customer, currentMonth));
             }
         }
-        MonthForTop.quickSort(result,0,result.size()-1);
+        MonthForTop.quickSort(result, 0, result.size() - 1);
         return result;
     }
 
@@ -70,7 +66,5 @@ public class CustomerService {
                 .collect(Collectors.toList());
     }
 
-
-    //вернуть самые прибальные месяцы в порядке возрастания в формате мап<месяц,сумма>
 
 }

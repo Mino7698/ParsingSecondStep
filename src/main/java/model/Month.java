@@ -3,6 +3,7 @@ package model;
 import util.JsonReadUtil;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 public class Month {
@@ -27,55 +28,23 @@ public class Month {
         return numberOfMonthOperations;
     }
 
-    public Month(List<Operation> operations, String monthName){
-        this.operations = operations;
-        NameOfMonths flagOfMonthName = NameOfMonths.INCORRECT;
-        for (NameOfMonths CounterOfMonthName : NameOfMonths.values()){
-            if (CounterOfMonthName.getName().equals(monthName)) {
-                flagOfMonthName = CounterOfMonthName;
-                break;
-            }
-        }
-        this.monthName = flagOfMonthName;
-        this.saldoOfMonth=operations.stream()
+    public Month(List<Map<String, Object>> operations, String monthName) {
+        this.operations = JsonReadUtil.parseOfOperation(operations);
+        this.monthName = NameOfMonths.getNameOfMonthObject(monthName);
+        this.saldoOfMonth=this.operations.stream()
                 .map(value ->  value.getValue())
-                .reduce(0, (a, b) -> Integer.sum(a, b));
-        this.numberOfMonthOperations = operations.size();
-    }
-
-
-    public Month(JsonReadUtil monthName){
-        this.operations = monthName.getOperations();
-        NameOfMonths flagOfMonthName = NameOfMonths.INCORRECT;
-        for (NameOfMonths CounterOfMonthName : NameOfMonths.values()){
-            if (CounterOfMonthName.getName().equals(monthName.getMonthName())) {
-                flagOfMonthName = CounterOfMonthName;
-                break;
-            }
-        }
-        this.monthName = flagOfMonthName;
-        this.saldoOfMonth=operations.stream()
-                .map(value ->  value.getValue())
-                .reduce(0, (a, b) -> Integer.sum(a, b));
+                .reduce(0, (acc, v) -> Integer.sum(acc, v));
         this.numberOfMonthOperations = operations.size();
     }
 
     public Month(Month monthName){
         this.operations = monthName.getOperations();
-        NameOfMonths flagOfMonthName = NameOfMonths.INCORRECT;
-        for (NameOfMonths CounterOfMonthName : NameOfMonths.values()){
-            if (CounterOfMonthName.getName().equals(monthName.getMonthName())) {
-                flagOfMonthName = CounterOfMonthName;
-                break;
-            }
-        }
-        this.monthName = flagOfMonthName;
+        this.monthName = monthName.getMonthName();
         this.saldoOfMonth=operations.stream()
                 .map(value ->  value.getValue())
-                .reduce(0, (a, b) -> Integer.sum(a, b));
+                .reduce(0, (acc, v) -> Integer.sum(acc, v));
         this.numberOfMonthOperations = operations.size();
     }
-
 
     @Override
     public String toString() {

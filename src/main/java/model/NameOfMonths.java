@@ -21,6 +21,17 @@ public enum NameOfMonths {
         this.mnthName = nameMnth;
     }
 
+    public static NameOfMonths getNameOfMonthObject(String monthName) {
+        NameOfMonths resultNameOfMonthName = NameOfMonths.INCORRECT;
+        for (NameOfMonths CounterOfMonthName : NameOfMonths.values()) {
+            if (CounterOfMonthName.getName().equals(monthName)) {
+                resultNameOfMonthName = CounterOfMonthName;
+                break;
+            }
+        }
+        return resultNameOfMonthName;
+    }
+
     public String getName() {
         return mnthName;
     }

@@ -8,24 +8,13 @@ public class MonthForTop {
     private final NameOfMonths monthName;
     private final int saldoOfMonth;
 
-    public MonthForTop (Customer customer,Month months){
+    public MonthForTop(Customer customer, Month months) {
         this.customerName = customer.getCustomerName();
         this.monthName = months.getMonthName();
         this.saldoOfMonth = months.getSaldoOfMonth();
     }
 
-    public String getCustomerName() {
-        return customerName;
-    }
-
-    public NameOfMonths getMonthName() {
-        return monthName;
-    }
-
-    public int getSaldoOfMonth() {
-        return saldoOfMonth;
-    }
-
+    // Быстрая сотировка
     public static void quickSort(List<MonthForTop> source, int leftBorder, int rightBorder) {
         int leftMarker = leftBorder;
         int rightMarker = rightBorder;
@@ -44,15 +33,14 @@ public class MonthForTop {
                 // Левый маркер будет меньше правого только если мы должны выполнить swap
                 if (leftMarker < rightMarker) {
                     MonthForTop tmp = source.get(leftMarker);
-                    source.set(leftMarker,source.get(rightMarker));
-                    source.set(rightMarker,tmp);
+                    source.set(leftMarker, source.get(rightMarker));
+                    source.set(rightMarker, tmp);
                 }
                 // Сдвигаем маркеры, чтобы получить новые границы
                 leftMarker++;
                 rightMarker--;
             }
         } while (leftMarker <= rightMarker);
-
         // Выполняем рекурсивно для частей
         if (leftMarker < rightBorder) {
             quickSort(source, leftMarker, rightBorder);
@@ -62,7 +50,17 @@ public class MonthForTop {
         }
     }
 
+    public String getCustomerName() {
+        return customerName;
+    }
 
+    public NameOfMonths getMonthName() {
+        return monthName;
+    }
+
+    public int getSaldoOfMonth() {
+        return saldoOfMonth;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -83,6 +81,6 @@ public class MonthForTop {
                 "customerName='" + customerName + '\'' +
                 ", monthName=" + monthName +
                 ", saldoOfMonth=" + saldoOfMonth +
-                '}' ;
+                '}';
     }
 }
