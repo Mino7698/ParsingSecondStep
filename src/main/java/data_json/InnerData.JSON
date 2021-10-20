@@ -159,6 +159,18 @@
           "currency": "USD"
         }
       ]
+    },
+    "Жопа": {
+      "operations": [
+        {
+          "value": 100,
+          "currency": "USD"
+        },
+        {
+          "value": -100600,
+          "currency": "USD"
+        }
+      ]
     }
   },
   "Люся": {

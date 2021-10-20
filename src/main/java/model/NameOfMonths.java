@@ -1,5 +1,9 @@
 package model;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.Locale;
+
 public enum NameOfMonths {
     ЯНВАРЬ("Январь"),
     ФЕВРАЛЬ("Февраль"),
@@ -21,15 +25,20 @@ public enum NameOfMonths {
         this.mnthName = nameMnth;
     }
 
+
+    // TODO: 19.10.2021 добиться О(1)
     public static NameOfMonths getNameOfMonthObject(String monthName) {
-        NameOfMonths resultNameOfMonthName = NameOfMonths.INCORRECT;
-        for (NameOfMonths CounterOfMonthName : NameOfMonths.values()) {
-            if (CounterOfMonthName.getName().equals(monthName)) {
-                resultNameOfMonthName = CounterOfMonthName;
-                break;
-            }
+        try {
+            return NameOfMonths.valueOf(monthName.toUpperCase(Locale.ROOT));
         }
-        return resultNameOfMonthName;
+        catch (Exception e){
+            return NameOfMonths.INCORRECT;
+        }
+    }
+
+    // TODO: 19.10.2021 return aslist winter month
+    public static List<NameOfMonths> NameOfWinterMonths(){
+        return Arrays.asList(ДЕКАБРЬ, ЯНВАРЬ, ФЕВРАЛЬ);
     }
 
     public String getName() {

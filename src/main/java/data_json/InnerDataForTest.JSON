@@ -1,0 +1,24 @@
+{
+  "Пупа": {
+    "Апрель": {
+      "operations": [
+      ]
+    },
+    "Ноябрь": {
+      "operations": [
+        {
+          "value": 100,
+          "currency": "USD"
+        }
+      ]
+    },
+    "Февраль": {
+      "operations": [
+      ]
+    },
+    "Март": {
+      "operations": [
+      ]
+    }
+  }
+}

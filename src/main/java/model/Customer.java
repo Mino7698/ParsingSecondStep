@@ -1,7 +1,14 @@
 package model;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
+
 import java.util.List;
 import java.util.Objects;
+
+@Getter
+@EqualsAndHashCode
 
 public class Customer {
     private final List<Month> months;
@@ -32,39 +39,10 @@ public class Customer {
                 .reduce(0, Integer::sum);
     }
 
-    public List<Month> getMonths() {
-        return months;
-    }
-
-    public String getCustomerName() {
-        return customerName;
-    }
-
-    public int getSaldoOfCustomer() {
-        return saldoOfCustomer;
-    }
-
-    public int getNumberOfCustomerOperations() {
-        return numberOfCustomerOperations;
-    }
-
     @Override
     public String toString() {
-        return customerName + " {" +
+        return '\n' + customerName + " {" +
                 "Months=" + months + '\'' +
                 '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Customer customer = (Customer) o;
-        return Objects.equals(months, customer.months) && Objects.equals(this.customerName, customer.customerName);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(months, customerName);
     }
 }

@@ -10,6 +10,10 @@ import java.util.stream.Collectors;
 
 public class JsonReadUtil {
 
+    private JsonReadUtil() {
+        throw new IllegalStateException("Utility class");
+    }
+
     public static List<Operation> parseOfOperation(List<Map<String, Object>> notParsedOperations) {
         return notParsedOperations.stream()
                 .map(operation -> new Operation((int) operation.get("value"), (String) operation.get("currency")))
