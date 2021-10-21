@@ -1,11 +1,14 @@
 package model;
 
+import lombok.Builder;
+import lombok.experimental.SuperBuilder;
 import util.JsonReadUtil;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
+@SuperBuilder
 public class Month {
     private final List<Operation> operations;
     private final NameOfMonths monthName;

@@ -9,13 +9,13 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class CustomerFilterService {
-    CustomerService customerService;
+    private final CustomerService customerService;
 
     public CustomerFilterService(CustomerService customerService) {
         this.customerService = customerService;
     }
 
-    // TODO: 19.10.2021 написать unit тесты на все методы используя библиотеку mokita, замокетировать кастомерсервис
+    // TODO: 19.10.2021 написать unit тесты на все методы используя библиотеку mockito, замокать кастомерсервис
 
     //возвращает месяцы и их доходность
     public List<AbstractMap.SimpleEntry<NameOfMonths, Integer>> getAllMonthOfAllCustomers() {
