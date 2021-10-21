@@ -14,7 +14,6 @@ import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
 import service.CustomerFilterService;
 import service.CustomerService;
-import util.JsonReadUtil;
 
 import java.util.AbstractMap;
 import java.util.ArrayList;
@@ -29,8 +28,8 @@ public class Test1 {
     private CustomerFilterService customerService2 = new CustomerFilterService(new CustomerService());
     @Mock
     private CustomerService mockCustomerService;
-    private Month month = Mockito.mock(Month.class);
-    private Customer customer = Mockito.mock(Customer.class);
+    private final Month mockMonth = Mockito.mock(Month.class);
+    private final Customer mockCustomer = Mockito.mock(Customer.class);
 
 
 
@@ -73,42 +72,50 @@ public class Test1 {
 
     @Test
     public void getSaldoTestWithMock() {
-        Assert.assertEquals(customer.getSaldoOfCustomer(),customerService2.getCustomersWithTransaction().get(0).getSaldoOfCustomer());
+        Assert.assertEquals(mockCustomer.getSaldoOfCustomer(),customerService2.getCustomersWithTransaction().get(0).getSaldoOfCustomer());
+        Mockito.verify(mockCustomer).getSaldoOfCustomer();
     }
 
     @Test
     public void getCustomerNameTestWithMock() {
-        Assert.assertEquals(customer.getCustomerName(),customerService2.getCustomersWithTransaction().get(0).getCustomerName());
+        Assert.assertEquals(mockCustomer.getCustomerName(),customerService2.getCustomersWithTransaction().get(0).getCustomerName());
+        Mockito.verify(mockCustomer).getCustomerName();
     }
     @Test
     public void getNumberOfCustomerOperationsTestWithMock() {
-        Assert.assertEquals(customer.getNumberOfCustomerOperations(),customerService2.getCustomersWithPositiveBalance().get(0).getNumberOfCustomerOperations());
+        Assert.assertEquals(mockCustomer.getNumberOfCustomerOperations(),customerService2.getCustomersWithPositiveBalance().get(0).getNumberOfCustomerOperations());
+        Mockito.verify(mockCustomer).getNumberOfCustomerOperations();
     }
 
     @Test
     public void getMonthNameTestWithMock23() {
-        Assert.assertEquals(month.getMonthName(),customerService2.getCustomersWithWinterTransaction().get(0).getMonths().get(2).getMonthName());
+        Assert.assertEquals(mockMonth.getMonthName(),customerService2.getCustomersWithWinterTransaction().get(0).getMonths().get(2).getMonthName());
+        Mockito.verify(mockMonth).getMonthName();
     }
 
     @Test
-    public void getSaldoOfMonthWithMock() {
-        Assert.assertEquals(month.getSaldoOfMonth(),customerService2.getCustomersWithWinterTransaction().get(0).getMonths().get(2).getSaldoOfMonth());
+    public void getNumberOfMonthOperationsWithMock() {
+        Assert.assertEquals(mockMonth.getSaldoOfMonth(),customerService2.getCustomersWithWinterTransaction().get(0).getMonths().get(2).getSaldoOfMonth());
+        Mockito.verify(mockMonth).getSaldoOfMonth();
     }
 
     @Test
-    public void getMonthNameTestWithMock2322() {
-        Assert.assertEquals(month.getNumberOfMonthOperations(),customerService2.getCustomersWithWinterTransaction().get(0).getMonths().get(2).getNumberOfMonthOperations());
+    public void getNumberOfMonthOperationsTestWithMock() {
+        Assert.assertEquals(mockMonth.getNumberOfMonthOperations(),customerService2.getCustomersWithWinterTransaction().get(0).getMonths().get(2).getNumberOfMonthOperations());
+        Mockito.verify(mockMonth).getNumberOfMonthOperations();
     }
 
     private void mockingOfMonth(){
-        Mockito.when(month.getNumberOfMonthOperations()).thenReturn(1);
-        Mockito.when(month.getSaldoOfMonth()).thenReturn(1488);
-        Mockito.when(month.getMonthName()).thenReturn(NameOfMonths.INCORRECT);
+        Mockito.when(mockMonth.getNumberOfMonthOperations()).thenReturn(1);
+        Mockito.when(mockMonth.getSaldoOfMonth()).thenReturn(1488);
+        Mockito.when(mockMonth.getMonthName()).thenReturn(NameOfMonths.INCORRECT);
+        Mockito.verifyNoMoreInteractions(mockMonth);
     }
     private void mockingOfCustomer(){
-        Mockito.when(customer.getSaldoOfCustomer()).thenReturn(2589);
-        Mockito.when(customer.getCustomerName()).thenReturn("Пупа");
-        Mockito.when(customer.getNumberOfCustomerOperations()).thenReturn(3);
+        Mockito.when(mockCustomer.getSaldoOfCustomer()).thenReturn(2589);
+        Mockito.when(mockCustomer.getCustomerName()).thenReturn("Пупа");
+        Mockito.when(mockCustomer.getNumberOfCustomerOperations()).thenReturn(3);
+        Mockito.verifyNoMoreInteractions(mockCustomer);
     }
 
 }
