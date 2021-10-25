@@ -24,6 +24,8 @@ public class TestingServices {
     @Rule
     public ExpectedException exception = ExpectedException.none();
     private CustomerFilterService customerFilterService;
+    List<Customer> customerList = new ArrayList<>();
+    List<AbstractMap.SimpleEntry<NameOfMonths, Integer>> testlist = new ArrayList<>();
     @Mock
     private CustomerService mockCustomerService;
     private final CustomerFilterService customerServiceJSONForTesting = new CustomerFilterService(new CustomerService());
@@ -40,16 +42,26 @@ public class TestingServices {
         List<Month> listOfMonth = Arrays.asList(new Month[]{june,march});
         Customer customerPupa = Customer.builder().customerName("Пупа").saldoOfCustomer(1470).numberOfCustomerOperations(1).months(listOfMonth).build();
         List<Customer> customerList = Arrays.asList(customerPupa);
+        this.customerList = customerList;
         Mockito.when(mockCustomerService.getAllCustomers()).thenReturn(customerList);
+
+        testlist.add(new AbstractMap.SimpleEntry<NameOfMonths, Integer>(NameOfMonths.ИЮНЬ, 1470));
+        testlist.add(new AbstractMap.SimpleEntry<NameOfMonths, Integer>(NameOfMonths.МАРТ, 0));
     }
     @Test
-    public void getCustomersWithTransaction() {
+    public void customerFilterServiceTest() {
         System.out.println(customerServiceJSONForTesting.getCustomersWithTransaction());
-        Assert.assertEquals(customerFilterService.getCustomersWithTransaction(), customerServiceJSONForTesting.getCustomersWithTransaction());
-        Assert.assertEquals(customerFilterService.getCustomersWithPositiveBalance(), customerServiceJSONForTesting.getCustomersWithPositiveBalance());
-        Assert.assertEquals(customerFilterService.getCustomersWithWinterTransaction(), customerServiceJSONForTesting.getCustomersWithWinterTransaction());
-        Assert.assertEquals(customerFilterService.getAllMonthOfAllCustomers(), customerServiceJSONForTesting.getAllMonthOfAllCustomers());
+        Assert.assertEquals(customerList,customerFilterService.getCustomersWithTransaction());
+        Assert.assertEquals(customerList,customerFilterService.getCustomersWithPositiveBalance());
+        Assert.assertEquals(Collections.emptyList(), customerFilterService.getCustomersWithWinterTransaction());
+        Assert.assertEquals(testlist,customerFilterService.getAllMonthOfAllCustomers());
        // Mockito.verify(mockCustomerService).getAllCustomers();
        // Mockito.verifyNoMoreInteractions(mockCustomerService);
+    }
+    @Test
+    public void getAllCustomersTest() {
+        Assert.assertEquals(customerList,mockCustomerService.getAllCustomers());
+        Mockito.verify(mockCustomerService).getAllCustomers();
+        Mockito.verifyNoMoreInteractions(mockCustomerService);
     }
 }
