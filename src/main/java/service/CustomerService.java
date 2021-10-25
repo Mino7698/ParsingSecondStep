@@ -18,7 +18,7 @@ public class CustomerService {
         Map<String, Map<String, Map<String, List<Map<String, Object>>>>> jsonRead;
         try {
             jsonRead = mapper
-                    .readValue(Paths.get("src/main/java/data_json/InnerDataForTest.JSON").toFile(), Map.class);
+                    .readValue(Paths.get("src/main/java/data_json/InnerDataForTestingServices.JSON").toFile(), Map.class);
         } catch (IOException e) {
             return Collections.emptyList();
         }

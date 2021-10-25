@@ -26,7 +26,6 @@ public enum NameOfMonths {
     }
 
 
-    // TODO: 19.10.2021 добиться О(1)
     public static NameOfMonths getNameOfMonthObject(String monthName) {
         try {
             return NameOfMonths.valueOf(monthName.toUpperCase(Locale.ROOT));
@@ -36,7 +35,6 @@ public enum NameOfMonths {
         }
     }
 
-    // TODO: 19.10.2021 return aslist winter month
     public static List<NameOfMonths> NameOfWinterMonths(){
         return Arrays.asList(ДЕКАБРЬ, ЯНВАРЬ, ФЕВРАЛЬ);
     }

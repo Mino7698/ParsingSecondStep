@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RunWith(MockitoJUnitRunner.class)
-public class Test1 {
+public class TestingMethods {
     @Rule
     public ExpectedException exception = ExpectedException.none();
 

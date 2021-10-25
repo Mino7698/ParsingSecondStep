@@ -1,10 +1,11 @@
 package model;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import lombok.experimental.SuperBuilder;
 
 import java.util.Objects;
 
-@JsonAutoDetect
+@JsonAutoDetect@SuperBuilder
 public class Operation {
     private final int value;
     private final String currency;
