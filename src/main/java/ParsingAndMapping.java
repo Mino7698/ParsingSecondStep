@@ -1,5 +1,6 @@
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import model.NameOfCurrency;
 import org.apache.http.client.fluent.Content;
 import org.apache.http.client.fluent.Request;
 import service.CustomerFilterService;
@@ -19,8 +20,8 @@ import java.util.Map;
 
 public class ParsingAndMapping {
     public static void main(String[] args) throws IOException {
-        CustomerFilterService customerService = new CustomerFilterService(new CustomerService());
-        System.out.println(customerService.getAllMonthOfAllCustomersInRubleValue());
-        System.out.println(customerService.getCustomersWithTransaction());
+       CustomerFilterService customerService = new CustomerFilterService(new CustomerService());
+       System.out.println(customerService.getAllMonthOfAllCustomersInRubleValue());
+       System.out.println(customerService.getCustomersWithTransaction());
     }
 }

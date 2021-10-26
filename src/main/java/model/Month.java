@@ -1,6 +1,5 @@
 package model;
 
-import lombok.Builder;
 import lombok.experimental.SuperBuilder;
 import util.JsonReadUtil;
 
@@ -12,7 +11,7 @@ import java.util.Objects;
 public class Month {
     private final List<Operation> operations;
     private final NameOfMonths monthName;
-    private final int saldoOfMonth;
+    private final Double saldoOfMonth;
     private final int numberOfMonthOperations;
 
     public List<Operation> getOperations() {
@@ -23,7 +22,7 @@ public class Month {
         return monthName;
     }
 
-    public int getSaldoOfMonth() {
+    public Double getSaldoOfMonth() {
         return saldoOfMonth;
     }
 
@@ -36,7 +35,7 @@ public class Month {
         this.monthName = NameOfMonths.getNameOfMonthObject(monthName);
         this.saldoOfMonth=this.operations.stream()
                 .map(value ->  value.getRubleValue())
-                .reduce(0, (acc, v) -> Integer.sum(acc, v));
+                .reduce((double) 0, (acc, v) -> Double.sum(acc, v));
         this.numberOfMonthOperations = operations.size();
     }
 
@@ -45,7 +44,7 @@ public class Month {
         this.monthName = monthName.getMonthName();
         this.saldoOfMonth=operations.stream()
                 .map(value ->  value.getRubleValue())
-                .reduce(0, (acc, v) -> Integer.sum(acc, v));
+                .reduce((double) 0, (acc, v) -> Double.sum(acc, v));
         this.numberOfMonthOperations = operations.size();
     }
 

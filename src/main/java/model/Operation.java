@@ -2,27 +2,27 @@ package model;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import lombok.experimental.SuperBuilder;
-import util.ExchangeRates;
+import service.ExchangeRatesAgainstTheRubleService;
 
 import java.util.Objects;
 
 @JsonAutoDetect@SuperBuilder
 public class Operation {
-    private final int value;
-    private final int rubleValue;
+    private final Double value;
+    private final Double rubleValue;
     private final NameOfCurrency currency;
 
-    public Operation(int value, String currency) {
+    public Operation(Double value, String currency) {
         this.value = value;
         this.currency = NameOfCurrency.getNameOfCurrencyObject(currency);
-        this.rubleValue = value* ExchangeRates.getRates(this.currency);
+        this.rubleValue = value* ExchangeRatesAgainstTheRubleService.getRates(this.currency);
     }
 
-    public int getValue() {
+    public Double getValue() {
         return value;
     }
 
-    public int getRubleValue() {
+    public Double getRubleValue() {
         return rubleValue;
     }
 

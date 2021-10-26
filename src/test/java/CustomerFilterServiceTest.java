@@ -37,31 +37,31 @@ public class CustomerFilterServiceTest {
     }
     public void creatingListOfCustomers() {
 
-        Operation operation1 = Operation.builder().currency(NameOfCurrency.USD).value(1471).build();
+        Operation operation1 = Operation.builder().currency(NameOfCurrency.USD).value(1471.0).build();
         List<Operation> operationList = Arrays.asList(new Operation[]{operation1});
-        Month june = Month.builder().monthName(NameOfMonths.ИЮНЬ).saldoOfMonth(1471).numberOfMonthOperations(1).operations(operationList).build();
-        Operation operation33 = Operation.builder().currency(NameOfCurrency.USD).value(1).build();
-        Operation operation44 = Operation.builder().currency(NameOfCurrency.USD).value(2).build();
-        Operation operation55 = Operation.builder().currency(NameOfCurrency.USD).value(3).build();
-        Operation operation66 = Operation.builder().currency(NameOfCurrency.USD).value(4).build();
+        Month june = Month.builder().monthName(NameOfMonths.ИЮНЬ).saldoOfMonth(Double.valueOf(1471)).numberOfMonthOperations(1).operations(operationList).build();
+        Operation operation33 = Operation.builder().currency(NameOfCurrency.USD).value(1.0).build();
+        Operation operation44 = Operation.builder().currency(NameOfCurrency.USD).value(2.0).build();
+        Operation operation55 = Operation.builder().currency(NameOfCurrency.USD).value(3.0).build();
+        Operation operation66 = Operation.builder().currency(NameOfCurrency.USD).value(4.0).build();
         List<Operation> operationListOfMarch = Arrays.asList(new Operation[]{operation33,operation44,operation55,operation66});
-        Month march = Month.builder().monthName(NameOfMonths.МАРТ).saldoOfMonth(10).numberOfMonthOperations(4).operations(operationListOfMarch).build();
+        Month march = Month.builder().monthName(NameOfMonths.МАРТ).saldoOfMonth(Double.valueOf(10)).numberOfMonthOperations(4).operations(operationListOfMarch).build();
         List<Month> listOfMonth = Arrays.asList(new Month[]{june,march});
-        Customer customerPupa = Customer.builder().customerName("Пупа").saldoOfCustomer(1481).numberOfCustomerOperations(1).months(listOfMonth).build();
+        Customer customerPupa = Customer.builder().customerName("Пупа").saldoOfCustomer(Double.valueOf(1481)).numberOfCustomerOperations(1).months(listOfMonth).build();
         List<Customer> customerListOfPupa = Arrays.asList(customerPupa);
         this.customerListOfPupa = customerListOfPupa;
         Mockito.when(mockCustomerService.getAllCustomers()).thenReturn(customerListOfPupa);
 
-        Operation operation2 = Operation.builder().currency(NameOfCurrency.USD).value(1470).build();
+        Operation operation2 = Operation.builder().currency(NameOfCurrency.USD).value(1470.0).build();
         List<Operation> operationListOfJule = Arrays.asList(new Operation[]{operation2});
-        Month jule = Month.builder().monthName(NameOfMonths.ИЮЛЬ).saldoOfMonth(1470).numberOfMonthOperations(1).operations(operationListOfJule).build();
-        Month may = Month.builder().monthName(NameOfMonths.МАЙ).saldoOfMonth(0).numberOfMonthOperations(0).operations(Collections.emptyList()).build();
-        Operation operation3 = Operation.builder().currency(NameOfCurrency.USD).value(100500).build();
-        Operation operation4 = Operation.builder().currency(NameOfCurrency.USD).value(-111555).build();
+        Month jule = Month.builder().monthName(NameOfMonths.ИЮЛЬ).saldoOfMonth(1470.0).numberOfMonthOperations(1).operations(operationListOfJule).build();
+        Month may = Month.builder().monthName(NameOfMonths.МАЙ).saldoOfMonth(Double.valueOf(0)).numberOfMonthOperations(0).operations(Collections.emptyList()).build();
+        Operation operation3 = Operation.builder().currency(NameOfCurrency.USD).value(100500.0).build();
+        Operation operation4 = Operation.builder().currency(NameOfCurrency.USD).value((double) -111555).build();
         List<Operation> operationList2 = Arrays.asList(new Operation[]{operation3, operation4});
-        Month december = Month.builder().monthName(NameOfMonths.ДЕКАБРЬ).saldoOfMonth(-11055).numberOfMonthOperations(2).operations(operationList2).build();
+        Month december = Month.builder().monthName(NameOfMonths.ДЕКАБРЬ).saldoOfMonth((double) -11055).numberOfMonthOperations(2).operations(operationList2).build();
         List<Month> listOfMonth2 = Arrays.asList(new Month[]{jule,may,december});
-        Customer customerLupa = Customer.builder().customerName("Лупа").saldoOfCustomer(-9585).numberOfCustomerOperations(1).months(listOfMonth2).build();
+        Customer customerLupa = Customer.builder().customerName("Лупа").saldoOfCustomer((double) -9585).numberOfCustomerOperations(1).months(listOfMonth2).build();
         List<Customer> customerListOfLupa = Arrays.asList(customerLupa);
         this.customerListOfLupa = customerListOfLupa;
 

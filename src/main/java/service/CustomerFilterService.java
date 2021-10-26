@@ -16,7 +16,7 @@ public class CustomerFilterService {
     }
 
     //возвращает месяцы и их доходность
-    public List<AbstractMap.SimpleEntry<NameOfMonths, Integer>> getAllMonthOfAllCustomersInRubleValue() {
+    public List<AbstractMap.SimpleEntry<NameOfMonths, Double>> getAllMonthOfAllCustomersInRubleValue() {
         Map<NameOfMonths, List<Month>> collect = customerService.getAllCustomers().stream()
                 .map(customer -> customer.getMonths())
                 .flatMap(months -> months.stream())
@@ -27,11 +27,11 @@ public class CustomerFilterService {
         .collect(Collectors.toList());
     }
 
-    public AbstractMap.SimpleEntry<NameOfMonths, Integer> getMapWithKeyAndValue(Map.Entry<NameOfMonths,List<Month>> innerMap){
-        Integer saldoOfMonth = innerMap.getValue().stream()
+    public AbstractMap.SimpleEntry<NameOfMonths, Double> getMapWithKeyAndValue(Map.Entry<NameOfMonths,List<Month>> innerMap){
+        Double saldoOfMonth = innerMap.getValue().stream()
                 .map(month -> month.getSaldoOfMonth())
-                .reduce(0, (acc, v) -> Integer.sum(acc, v));
-        return  new AbstractMap.SimpleEntry<NameOfMonths, Integer>(innerMap.getKey(),saldoOfMonth);
+                .reduce((double) 0, (acc, v) -> Double.sum(acc, v));
+        return  new AbstractMap.SimpleEntry<NameOfMonths, Double>(innerMap.getKey(),saldoOfMonth);
     }
 
     //возвращает всех пользователей у кого есть хотя бы одна транзакция

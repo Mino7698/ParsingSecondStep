@@ -14,7 +14,7 @@ import java.util.Objects;
 public class Customer {
     private final List<Month> months;
     private final String customerName;
-    private final int saldoOfCustomer;
+    private final Double saldoOfCustomer;
     private final int numberOfCustomerOperations;
 
 
@@ -23,7 +23,7 @@ public class Customer {
         this.customerName = customer;
         this.saldoOfCustomer = months.stream()
                 .map(value -> value.getSaldoOfMonth())
-                .reduce(0, Integer::sum);
+                .reduce((double) 0, Double::sum);
         this.numberOfCustomerOperations = months.stream()
                 .map(value -> value.getNumberOfMonthOperations())
                 .reduce(0, Integer::sum);
@@ -34,7 +34,7 @@ public class Customer {
         this.customerName = customer.customerName;
         this.saldoOfCustomer = months.stream()
                 .map(value -> value.getSaldoOfMonth())
-                .reduce(0, Integer::sum);
+                .reduce((double) 0, Double::sum);
         this.numberOfCustomerOperations = months.stream()
                 .map(value -> value.getNumberOfMonthOperations())
                 .reduce(0, Integer::sum);

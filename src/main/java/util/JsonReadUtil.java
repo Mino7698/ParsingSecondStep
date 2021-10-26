@@ -16,7 +16,7 @@ public class JsonReadUtil {
 
     public static List<Operation> parseOfOperation(List<Map<String, Object>> notParsedOperations) {
         return notParsedOperations.stream()
-                .map(operation -> new Operation((int) operation.get("value"), (String) operation.get("currency")))
+                .map(operation -> new Operation((Double) operation.get("value"), (String) operation.get("currency")))
                 .collect(Collectors.toList());
     }
 

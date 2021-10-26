@@ -58,15 +58,15 @@ public class TestingMethods {
 
     @Test
     public void operationClassicTest() {
-        Operation operation = new Operation(1488, "USD");
+        Operation operation = new Operation(1488.0, "USD");
         Assert.assertEquals(operation,customerService2.getCustomersWithTransaction().get(0).getMonths().get(2).getOperations().get(0));
     }
 
     @Test
     public void monthClassicTest() {
         List<Operation> operationListNov = new ArrayList<>();
-        operationListNov.add(new Operation(1488, "USD"));
-        Month month2 = Month.builder().monthName(NameOfMonths.INCORRECT).saldoOfMonth(1488).numberOfMonthOperations(1).operations(operationListNov).build();
+        operationListNov.add(new Operation(1488.0, "USD"));
+        Month month2 = Month.builder().monthName(NameOfMonths.INCORRECT).saldoOfMonth(1488.0).numberOfMonthOperations(1).operations(operationListNov).build();
         Assert.assertEquals(month2,customerService2.getCustomersWithTransaction().get(0).getMonths().get(2));
     }
 
@@ -107,12 +107,12 @@ public class TestingMethods {
 
     private void mockingOfMonth(){
         Mockito.when(mockMonth.getNumberOfMonthOperations()).thenReturn(1);
-        Mockito.when(mockMonth.getSaldoOfMonth()).thenReturn(1488);
+        Mockito.when(mockMonth.getSaldoOfMonth()).thenReturn(1488.0);
         Mockito.when(mockMonth.getMonthName()).thenReturn(NameOfMonths.INCORRECT);
         Mockito.verifyNoMoreInteractions(mockMonth);
     }
     private void mockingOfCustomer(){
-        Mockito.when(mockCustomer.getSaldoOfCustomer()).thenReturn(2589);
+        Mockito.when(mockCustomer.getSaldoOfCustomer()).thenReturn(2589.0);
         Mockito.when(mockCustomer.getCustomerName()).thenReturn("Пупа");
         Mockito.when(mockCustomer.getNumberOfCustomerOperations()).thenReturn(3);
         Mockito.verifyNoMoreInteractions(mockCustomer);
