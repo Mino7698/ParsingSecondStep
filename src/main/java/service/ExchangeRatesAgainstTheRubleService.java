@@ -23,7 +23,7 @@ public class ExchangeRatesAgainstTheRubleService {
                     .readValue(getResult.asString(), Map.class);
             Map valute = (Map) jsonRead.get("Valute");
             Map currence = (Map) valute.get(curName.name());
-            return  ((Double)currence.get("Value")/(Double)currence.get("Nominal"));
+            return ((Double)currence.get("Value")/(int)currence.get("Nominal"));
         } catch (IOException e) {
             return 1.0;
         }

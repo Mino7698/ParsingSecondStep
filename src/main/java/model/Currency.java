@@ -1,10 +1,8 @@
 package model;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Locale;
 
-public enum NameOfCurrency {
+public enum Currency {
     AUD("Австралийский доллар"),
     AZN("Азербайджанский манат"),
     GBP("Фунт стерлингов Соединенного королевства"),
@@ -44,17 +42,17 @@ public enum NameOfCurrency {
 
     private final String crrncName;
 
-    NameOfCurrency(String crrncMnth) {
+    Currency(String crrncMnth) {
         this.crrncName = crrncMnth;
     }
 
 
-    public static NameOfCurrency getNameOfCurrencyObject(String curName) {
+    public static Currency getNameOfCurrencyObject(String curName) {
         try {
-            return NameOfCurrency.valueOf(curName.toUpperCase(Locale.ROOT));
+            return Currency.valueOf(curName.toUpperCase(Locale.ROOT));
         }
         catch (Exception e){
-            return NameOfCurrency.INCORRECT;
+            return Currency.INCORRECT;
         }
     }
 
