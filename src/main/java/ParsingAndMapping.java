@@ -22,6 +22,5 @@ public class ParsingAndMapping {
         CustomerFilterService customerService = new CustomerFilterService(new CustomerService());
         System.out.println(customerService.getAllMonthOfAllCustomersInRubleValue());
         System.out.println(customerService.getCustomersWithTransaction());
-
     }
 }

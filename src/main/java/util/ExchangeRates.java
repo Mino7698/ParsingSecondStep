@@ -1,6 +1,7 @@
-package model;
+package util;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import model.NameOfCurrency;
 import org.apache.http.client.fluent.Content;
 import org.apache.http.client.fluent.Request;
 
