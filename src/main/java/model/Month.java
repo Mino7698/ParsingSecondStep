@@ -1,6 +1,7 @@
 package model;
 
 import lombok.experimental.SuperBuilder;
+import util.InternalCalculationsUtil;
 import util.JsonReadUtil;
 
 import java.util.List;
@@ -33,19 +34,19 @@ public class Month {
     public Month(List<Map<String, Object>> operations, String monthName) {
         this.operations = JsonReadUtil.parseOfOperation(operations);
         this.monthName = NameOfMonths.getNameOfMonthObject(monthName);
-        this.saldoOfMonth=this.operations.stream()
-                .map(value ->  value.getRubleValue())
-                .reduce((double) 0, (acc, v) -> Double.sum(acc, v));
+        this.saldoOfMonth= InternalCalculationsUtil.saldoOfMonth(this.operations);
         this.numberOfMonthOperations = operations.size();
     }
 
     public Month(Month monthName){
         this.operations = monthName.getOperations();
         this.monthName = monthName.getMonthName();
-        this.saldoOfMonth=operations.stream()
-                .map(value ->  value.getRubleValue())
-                .reduce((double) 0, (acc, v) -> Double.sum(acc, v));
+        this.saldoOfMonth=InternalCalculationsUtil.saldoOfMonth(this.operations);
         this.numberOfMonthOperations = operations.size();
+    }
+
+    public double universalCurrencySaldoOfMonthGetter (Currency currency){
+        return saldoOfMonth/InternalCalculationsUtil.getRates(currency);
     }
 
     @Override

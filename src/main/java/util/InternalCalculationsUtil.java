@@ -1,14 +1,34 @@
-package service;
+package util;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import model.Currency;
+import model.Month;
+import model.Operation;
 import org.apache.http.client.fluent.Content;
 import org.apache.http.client.fluent.Request;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
-public class ExchangeRatesAgainstTheRubleService {
+public class InternalCalculationsUtil {
+    public static Double saldoOfMonth(List<Operation> list){
+        return list.stream()
+                .map(value ->  value.getRubleValue())
+                .reduce((double) 0, (acc, v) -> Double.sum(acc, v));
+    }
+
+    public static Double saldoOfCustomer(List<Month> list){
+        return list.stream()
+                .map(value -> value.getSaldoOfMonth())
+                .reduce((double) 0, Double::sum);
+    }
+
+    public static int numberOfCustomerOperations(List<Month> list){
+        return list.stream()
+                .map(value -> value.getNumberOfMonthOperations())
+                .reduce(0, Integer::sum);
+    }
 
     public static Double getRates(Currency curName){
         if (curName == Currency.RUB) return 1.0;

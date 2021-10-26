@@ -2,7 +2,7 @@ package model;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import lombok.experimental.SuperBuilder;
-import service.ExchangeRatesAgainstTheRubleService;
+import util.InternalCalculationsUtil;
 
 import java.util.Objects;
 
@@ -15,7 +15,7 @@ public class Operation {
     public Operation(Double value, String currency) {
         this.value = value;
         this.currency = Currency.getNameOfCurrencyObject(currency);
-        this.rubleValue = value* ExchangeRatesAgainstTheRubleService.getRates(this.currency);
+        this.rubleValue = value* InternalCalculationsUtil.getRates(this.currency);
     }
 
     public Double getValue() {

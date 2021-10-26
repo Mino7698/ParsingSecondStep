@@ -3,6 +3,7 @@ package model;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.experimental.SuperBuilder;
+import util.InternalCalculationsUtil;
 
 import java.util.List;
 
@@ -19,23 +20,19 @@ public class Customer {
     public Customer(List<Month> months, String customer) {
         this.months = months;
         this.customerName = customer;
-        this.saldoOfCustomer = months.stream()
-                .map(value -> value.getSaldoOfMonth())
-                .reduce((double) 0, Double::sum);
-        this.numberOfCustomerOperations = months.stream()
-                .map(value -> value.getNumberOfMonthOperations())
-                .reduce(0, Integer::sum);
+        this.saldoOfCustomer = InternalCalculationsUtil.saldoOfCustomer(months);
+        this.numberOfCustomerOperations = InternalCalculationsUtil.numberOfCustomerOperations(months);
     }
 
     public Customer(Customer customer) {
         this.months = customer.months;
         this.customerName = customer.customerName;
-        this.saldoOfCustomer = months.stream()
-                .map(value -> value.getSaldoOfMonth())
-                .reduce((double) 0, Double::sum);
-        this.numberOfCustomerOperations = months.stream()
-                .map(value -> value.getNumberOfMonthOperations())
-                .reduce(0, Integer::sum);
+        this.saldoOfCustomer = InternalCalculationsUtil.saldoOfCustomer(months);
+        this.numberOfCustomerOperations = InternalCalculationsUtil.numberOfCustomerOperations(months);
+    }
+
+    public double universalCurrencySaldoOfCustomerGetter(Currency currency){
+        return saldoOfCustomer/InternalCalculationsUtil.getRates(currency);
     }
 
     @Override
@@ -44,4 +41,5 @@ public class Customer {
                 "Months=" + months + '\'' +
                 '}';
     }
+
 }

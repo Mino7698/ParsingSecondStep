@@ -1,3 +1,4 @@
+import model.Currency;
 import service.CustomerFilterService;
 import service.CustomerService;
 
@@ -9,5 +10,14 @@ public class ParsingAndMapping {
        CustomerFilterService customerService = new CustomerFilterService(new CustomerService());
        System.out.println(customerService.getAllMonthOfAllCustomersInRubleValue());
        System.out.println(customerService.getCustomersWithTransaction());
+
+        System.out.println(customerService.getCustomersWithTransaction().get(0)
+                .universalCurrencySaldoOfCustomerGetter(Currency.AUD));
+        System.out.println(customerService.getCustomersWithTransaction().get(0)
+                .universalCurrencySaldoOfCustomerGetter(Currency.RUB));
+        System.out.println(customerService.getCustomersWithTransaction().get(0)
+                .universalCurrencySaldoOfCustomerGetter(Currency.EUR));
+
+
     }
 }
