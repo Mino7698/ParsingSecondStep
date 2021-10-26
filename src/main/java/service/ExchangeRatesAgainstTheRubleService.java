@@ -13,6 +13,7 @@ public class ExchangeRatesAgainstTheRubleService {
 
     public static Double getRates(NameOfCurrency curName){
         if (curName == NameOfCurrency.RUB) return 1.0;
+        if (curName == NameOfCurrency.INCORRECT) return 1.0;
         try {
             final Content getResult;
             getResult = Request.Get("https://www.cbr-xml-daily.ru/daily_json.js")
