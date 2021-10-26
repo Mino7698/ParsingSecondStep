@@ -35,7 +35,7 @@ public enum NameOfMonths {
         }
     }
 
-    public static List<NameOfMonths> NameOfWinterMonths(){
+    public static List<NameOfMonths> getNameOfWinterMonths(){
         return Arrays.asList(ДЕКАБРЬ, ЯНВАРЬ, ФЕВРАЛЬ);
     }
 

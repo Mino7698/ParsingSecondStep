@@ -46,7 +46,7 @@ public class CustomerFilterService {
         return customerService.getAllCustomers().stream()
                 .filter(value -> value.getNumberOfCustomerOperations() > 0)
                 .filter(value -> value.getMonths().stream()
-                        .anyMatch(month -> (NameOfMonths.NameOfWinterMonths().contains(month.getMonthName())
+                        .anyMatch(month -> (NameOfMonths.getNameOfWinterMonths().contains(month.getMonthName())
                                 && (month.getNumberOfMonthOperations() > 0))))
                 .collect(Collectors.toList());
     }

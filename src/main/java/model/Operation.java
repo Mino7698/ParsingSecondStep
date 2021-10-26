@@ -10,11 +10,11 @@ import java.util.Objects;
 public class Operation {
     private final Double value;
     private final Double rubleValue;
-    private final NameOfCurrency currency;
+    private final Currency currency;
 
     public Operation(Double value, String currency) {
         this.value = value;
-        this.currency = NameOfCurrency.getNameOfCurrencyObject(currency);
+        this.currency = Currency.getNameOfCurrencyObject(currency);
         this.rubleValue = value* ExchangeRatesAgainstTheRubleService.getRates(this.currency);
     }
 
@@ -26,7 +26,7 @@ public class Operation {
         return rubleValue;
     }
 
-    public NameOfCurrency getCurrency() {
+    public Currency getCurrency() {
         return currency;
     }
 
@@ -44,7 +44,7 @@ public class Operation {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Operation that = (Operation) o;
-        return value == that.value && Objects.equals(currency, that.currency);
+        return value.equals(that.value) && Objects.equals(currency, that.currency);
     }
 
     @Override
