@@ -35,7 +35,7 @@ public class Month {
         this.operations = JsonReadUtil.parseOfOperation(operations);
         this.monthName = NameOfMonths.getNameOfMonthObject(monthName);
         this.saldoOfMonth=this.operations.stream()
-                .map(value ->  value.getValue())
+                .map(value ->  value.getRubleValue())
                 .reduce(0, (acc, v) -> Integer.sum(acc, v));
         this.numberOfMonthOperations = operations.size();
     }
@@ -44,7 +44,7 @@ public class Month {
         this.operations = monthName.getOperations();
         this.monthName = monthName.getMonthName();
         this.saldoOfMonth=operations.stream()
-                .map(value ->  value.getValue())
+                .map(value ->  value.getRubleValue())
                 .reduce(0, (acc, v) -> Integer.sum(acc, v));
         this.numberOfMonthOperations = operations.size();
     }

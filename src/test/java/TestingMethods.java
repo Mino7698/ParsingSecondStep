@@ -53,7 +53,7 @@ public class TestingMethods {
         testlist.add(new AbstractMap.SimpleEntry<NameOfMonths, Integer>(NameOfMonths.НОЯБРЬ, 1001));
         testlist.add(new AbstractMap.SimpleEntry<NameOfMonths, Integer>(NameOfMonths.ДЕКАБРЬ, 100));
         testlist.add(new AbstractMap.SimpleEntry<NameOfMonths, Integer>(NameOfMonths.МАРТ, 0));
-        Assert.assertEquals(testlist, customerService2.getAllMonthOfAllCustomers());
+        Assert.assertEquals(testlist, customerService2.getAllMonthOfAllCustomersInRubleValue());
     }
 
     @Test

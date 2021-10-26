@@ -15,10 +15,8 @@ public class CustomerFilterService {
         this.customerService = customerService;
     }
 
-    // TODO: 19.10.2021 написать unit тесты на все методы используя библиотеку mockito, замокать кастомерсервис
-
     //возвращает месяцы и их доходность
-    public List<AbstractMap.SimpleEntry<NameOfMonths, Integer>> getAllMonthOfAllCustomers() {
+    public List<AbstractMap.SimpleEntry<NameOfMonths, Integer>> getAllMonthOfAllCustomersInRubleValue() {
         Map<NameOfMonths, List<Month>> collect = customerService.getAllCustomers().stream()
                 .map(customer -> customer.getMonths())
                 .flatMap(months -> months.stream())

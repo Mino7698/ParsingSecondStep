@@ -8,18 +8,24 @@ import java.util.Objects;
 @JsonAutoDetect@SuperBuilder
 public class Operation {
     private final int value;
-    private final String currency;
+    private final int rubleValue;
+    private final NameOfCurrency currency;
 
     public Operation(int value, String currency) {
         this.value = value;
-        this.currency = currency;
+        this.currency = NameOfCurrency.getNameOfCurrencyObject(currency);
+        this.rubleValue = value*ExchangeRates.getRates(this.currency);
     }
 
     public int getValue() {
         return value;
     }
 
-    public String getCurrency() {
+    public int getRubleValue() {
+        return rubleValue;
+    }
+
+    public NameOfCurrency getCurrency() {
         return currency;
     }
 
@@ -27,8 +33,9 @@ public class Operation {
     public String toString() {
         return "{" +
                 "value=" + value +
-                ", currency='" + currency + '\'' +
-                '}';
+                ", currency='" + currency.getName() + "', RubleValue='" +
+                rubleValue +
+                "'}";
     }
 
     @Override

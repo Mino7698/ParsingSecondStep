@@ -3,15 +3,15 @@
     "Январь": {
       "operations": [
         {
-          "value": 11000,
-          "currency": "USD"
+          "value": 1000,
+          "currency": "EUR"
         },
         {
-          "value": 33000,
+          "value": 3300,
           "currency": "RUB"
         },
         {
-          "value": -22000,
+          "value": -2200,
           "currency": "USD"
         }
       ]

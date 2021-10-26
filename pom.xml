@@ -12,7 +12,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -35,6 +35,19 @@
             <version>${mockito-core.version}</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.javamoney</groupId>
+            <artifactId>moneta</artifactId>
+            <version>${moneta.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>fluent-hc</artifactId>
+            <version>${fluent-hc.version}</version>
+        </dependency>
+
     </dependencies>
 
     <properties>
@@ -43,6 +56,9 @@
         <jackson-databind.version>2.13.0-rc2</jackson-databind.version>
         <lombok.version>1.18.22</lombok.version>
         <mockito-core.version>2.24.0</mockito-core.version>
+        <junit.version>4.12</junit.version>
+        <moneta.version>0.9</moneta.version>
+        <fluent-hc.version>4.5.6</fluent-hc.version>
     </properties>
 
 </project>

@@ -18,7 +18,7 @@ public class CustomerService {
         Map<String, Map<String, Map<String, List<Map<String, Object>>>>> jsonRead;
         try {
             jsonRead = mapper
-                    .readValue(Paths.get("src/main/java/data_json/InnerDataForTestingServices.JSON").toFile(), Map.class);
+                    .readValue(Paths.get("src/main/java/data_json/InnerData.JSON").toFile(), Map.class);
         } catch (IOException e) {
             return Collections.emptyList();
         }
@@ -27,3 +27,6 @@ public class CustomerService {
                 .collect(Collectors.toList());
     }
 }
+// TODO: 25.10.2021 currency = enum
+// TODO: 25.10.2021 написать сервис который с помощью гет запроса возвращает курс доллара или евро к рублю в данный момент
+// TODO: 25.10.2021 эти методы завязать в сервис фильтрации, сделать перевод всей валюты в рубли
